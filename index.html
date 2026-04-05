@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Performance AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI';
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            grid-column: span 2;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: none;
+            background: #00c9ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #92fe9d;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎓 Student Performance Dashboard</h1>
+
+    <form action="/predict" method="post" class="form-grid">
+        <input type="number" name="hours" placeholder="Study Hours" required>
+        <input type="number" name="attendance" placeholder="Attendance %" required>
+        <input type="number" name="assignments" placeholder="Assignments" required>
+        <input type="number" name="previous_score" placeholder="Previous Score" required>
+
+        <button type="submit">Predict Performance 🚀</button>
+    </form>
+</div>
+
+</body>
+</html>
