@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI';
+            background: linear-gradient(135deg, #1d2b64, #f8cdda);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        canvas {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h1>📊 Prediction Result</h1>
+        <h2>Score: {{ prediction }}</h2>
+        <h2>{{ category }}</h2>
+        <p>{{ suggestion }}</p>
+    </div>
+
+    <div class="card">
+        <h2>📈 Performance Breakdown</h2>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <a href="/">⬅ Go Back</a>
+
+</div>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    const dataValues = [
+        {{ hours | float }},
+        {{ attendance | float }},
+        {{ assignments | float }},
+        {{ previous_score | float }}
+    ];
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Study Hours', 'Attendance', 'Assignments', 'Previous Score'],
+            datasets: [{
+                label: 'Student Data',
+                data: dataValues
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
